@@ -1,4 +1,4 @@
-# README для приложения Rick & Morty API на React + TypeScript + Vite
+# Rick & Morty API на React + TypeScript + Vite
 
 ## Описание проекта
 
