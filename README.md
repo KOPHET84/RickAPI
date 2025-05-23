@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# README для приложения Rick & Morty API на React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
 
-Currently, two official plugins are available:
+Это приложение, использующее API Rick & Morty, разработано с использованием React, TypeScript и Vite. Оно позволяет получать и отображать список персонажей из вселенной Рика и Морти, включая их имена и аватары.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Структура проекта
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+src/
+├── app/
+│   ├── reduxHooks.ts
+│   └── store.ts
+├── features/
+│   ├── characterSlice.ts
+│   └── characterThunk.ts
+├── pages/
+│   └── CardInformation/
+│       ├── Card.styles.ts
+│       └── CardDialog.tsx
+├── app.css
+├── app.tsx
+├── index.css
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Установка
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Склонируйте репозиторий:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+   ```bash
+   git clone https://github.com/KOPHET84/RickAPI
+   ```
+
+2. Перейдите в директорию проекта:
+
+   ```bash
+   cd RickAPI
+   ```
+
+3. Установите зависимости:
+
+   ```bash
+   npm install
+   ```
+
+## Запуск проекта
+
+Запустите проект с помощью команды:
+
+```bash
+npm run dev
 ```
+
+Откройте браузер и перейдите по адресу [http://localhost:5173/](http://localhost:5173/) для доступа к приложению.
+
+## Функциональность
+
+При монтировании компонента приложение:
+
+- Получает список персонажей.
+- Отображает статус загрузки (loading).
+- Показывает ошибку, если она возникает.
+- Выводит список персонажей с их именами и аватарами.
+
+## Используемые технологии
+
+- **React**: Библиотека для построения пользовательских интерфейсов.
+- **TypeScript**: Язык программирования, добавляющий статическую типизацию к JavaScript.
+- **Vite**: Современный инструмент для сборки проектов на JavaScript.
+
+## Архитектура Redux
+
+- Используется `createAsyncThunk` для выполнения асинхронных запросов к API.
+- В слайсе используются `extraReducers` для обработки различных состояний загрузки данных.
+
